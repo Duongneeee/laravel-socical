@@ -22,10 +22,10 @@ Route::get('chinh-sach-rieng-tu',function(){
     return '<h1>Duong</h1>';
 });
 
-Route::get('auth/facebook',function(){
+Route::get('/auth/facebook',function(){
     return Socialite::driver('facebook')->redirect();
 });
 
-Route::get('auth/facebook/callback',function(){
+Route::get('/auth/facebook/callback',function(){
     return 'callback login facebook';
 });
