@@ -27,5 +27,6 @@ Route::get('/auth/facebook',function(){
 });
 
 Route::get('/auth/facebook/callback',function(){
-    return 'callback login facebook';
+    $user = Socialite::driver('facebook')->user();
+    dd($user);
 });
