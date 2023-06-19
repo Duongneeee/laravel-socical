@@ -41,3 +41,21 @@ Route::get('/auth/google/callback',function(){
     $user = Socialite::driver('google')->user();
     dd($user);
 });
+
+Route::get('/auth/twitter',function(){
+    return Socialite::driver('twitter')->redirect();
+});
+
+Route::get('/auth/twitter/callback',function(){
+    $user = Socialite::driver('twitter')->user();
+    dd($user);
+});
+
+Route::get('/auth/github',function(){
+    return Socialite::driver('github')->redirect();
+});
+
+Route::get('/auth/github/callback',function(){
+    $user = Socialite::driver('github')->user();
+    dd($user);
+});

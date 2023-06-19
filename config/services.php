@@ -42,5 +42,17 @@ return [
         'client_secret' => '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',
         'redirect' => '/auth/google/callback',
     ],
+    
+    'twitter' => [
+        'client_id' => '',
+        'client_secret' => '',
+        'redirect' => '/auth/twitter/callback',
+    ],
+
+    'github' => [
+        'client_id' => 'Iv1.3a50fa14f7b45e77',
+        'client_secret' => 'f95770a5f7632071564267f2457d2c1f4ab113dd',
+        'redirect' => '/auth/github/callback',
+    ],
 
 ];
