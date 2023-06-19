@@ -18,7 +18,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
 
-    DB::insert('users',[
+    DB::table('users')->insert([
         'name'=> 'Huy Dương',
         'email'=> 'huyduong@gmail.com',
         'password'=> Hash::make('123456'),
