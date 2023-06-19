@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -15,6 +17,15 @@ use Laravel\Socialite\Facades\Socialite;
 */
 
 Route::get('/', function () {
+
+    DB::insert('users',[
+        'name'=> 'Huy Dương',
+        'email'=> 'huyduong@gmail.com',
+        'password'=> Hash::make('123456'),
+    ]);
+
+    $data =DB::table('users')->get();
+    dd($data);
     return view('welcome');
 });
 
