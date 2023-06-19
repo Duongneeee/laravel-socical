@@ -57,5 +57,5 @@ Route::get('/auth/github',function(){
 
 Route::get('/auth/github/callback',function(){
     $user = Socialite::driver('github')->user();
-    dd($user);
+    
 });
