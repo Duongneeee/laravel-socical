@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -18,14 +20,14 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
 
-    DB::table('users')->insert([
-        'name'=> 'Huy Dương',
-        'email'=> 'huyduong@gmail.com',
-        'password'=> Hash::make('123456'),
-    ]);
+    // DB::table('users')->insert([
+    //     'name'=> 'Huy Dương',
+    //     'email'=> 'huyduong@gmail.com',
+    //     'password'=> Hash::make('123456'),
+    // ]);
 
-    $data =DB::table('users')->get();
-    dd($data);
+    // $data =DB::table('users')->get();
+    // dd($data);
     return view('welcome');
 });
 
@@ -35,23 +37,15 @@ Route::get('chinh-sach-rieng-tu',function(){
 
 Route::get('/auth/facebook',function(){
     return Socialite::driver('facebook')->redirect();
-});
+})->name('auth.facebook');
 
-Route::get('/auth/facebook/callback',function(){
-    $user = Socialite::driver('facebook')->user();
-    echo $user->getEmail().'<br>';
-    echo $user->getName().'<br>';
-    echo $user->getAvatar().'<br>';
-});
+Route::get('/auth/facebook/callback',[LoginController::class,'facebookCallback']);
 
 Route::get('/auth/google',function(){
     return Socialite::driver('google')->redirect();
-});
+})->name('auth.google');
 
-Route::get('/auth/google/callback',function(){
-    $user = Socialite::driver('google')->user();
-    dd($user);
-});
+Route::get('/auth/google/callback',[LoginController::class,'googleCallback']);
 
 Route::get('/auth/twitter',function(){
     return Socialite::driver('twitter')->redirect();
@@ -64,9 +58,10 @@ Route::get('/auth/twitter/callback',function(){
 
 Route::get('/auth/github',function(){
     return Socialite::driver('github')->redirect();
-});
+})->name('auth.github');
 
-Route::get('/auth/github/callback',function(){
-    $user = Socialite::driver('github')->user();
-   dd($user);
-});
+Route::get('/auth/github/callback',[LoginController::class,'githubCallback']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
