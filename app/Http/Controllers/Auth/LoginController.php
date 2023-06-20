@@ -53,6 +53,7 @@ class LoginController extends Controller
         echo $user->getAvatar().'<br>';
     }
 
+    public function twitterCallback(){}
 
     public function githubCallback(){
         $user = Socialite::driver('github')->user();
