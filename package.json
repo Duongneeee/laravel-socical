@@ -2,13 +2,9 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "react-scripts start",
-        "start": "serve -s build",
-        "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
-        "eject": "react-scripts eject",
-        "heroku-postbuild": "npm run build"
-   },
+        "dev": "vite",
+        "build": "vite build"
+    },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
         "axios": "^1.1.2",
